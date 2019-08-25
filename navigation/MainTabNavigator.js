@@ -24,11 +24,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name='md-information-circle'
     />
   ),
 };
@@ -45,7 +41,7 @@ const LinksStack = createStackNavigator(
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name='md-happy' />
   ),
 };
 
@@ -61,17 +57,23 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name='md-link' />
   ),
 };
 
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
   LinksStack,
+  HomeStack,
   SettingsStack,
-});
+}, 
+{
+  tabBarOptions: {
+    showLabel: false
+  }
+}
+);
 
 tabNavigator.path = '';
 
